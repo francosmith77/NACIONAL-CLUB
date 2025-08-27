@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -73,13 +73,22 @@
     .cta{background:linear-gradient(90deg,var(--brand),var(--accent)); color:#041019; font-weight:800; padding:10px 14px; border-radius:12px; display:inline-block}
     .btn{display:inline-block; text-align:center; padding:8px 10px; border-radius:10px; background:#08202a; border:1px solid rgba(34,211,238,.45); color:#b6f5ff; font-weight:700; font-size:12px}
 
-    /* Hero */
-    .hero{position:relative; padding:74px 0 34px; overflow:hidden}
+    /* ===== HERO full-bleed (ancho completo, alto moderado) ===== */
+    .hero{
+      position:relative;
+      /* full-bleed dentro de un .container */
+      margin-left:calc(50% - 50vw);
+      margin-right:calc(50% - 50vw);
+      padding:clamp(40px,6vw,72px) 0;
+      min-height:clamp(320px,52vh,560px);
+      overflow:hidden;
+    }
     .hero:before{content:""; position:absolute; inset:-20% -10% auto -10%; height:120%; z-index:-1;
       background:radial-gradient(70% 70% at 20% 20%, rgba(34,211,238,.22), transparent 60%),
                  linear-gradient(135deg, rgba(24,182,246,.22), rgba(12,18,36,.18));}
     .stripes{position:absolute; inset:0; z-index:-2; background:
-      repeating-linear-gradient( 75deg, rgba(255,255,255,.05) 0 14px, transparent 14px 48px )}
+      repeating-linear-gradient(75deg, rgba(255,255,255,.05) 0 14px, transparent 14px 48px)}
+    .hero-inner{width:100%; max-width:1180px; margin:0 auto; padding:0 16px}
     .hero-grid{display:grid; grid-template-columns:1.6fr 1fr; gap:22px}
     .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:22px}
     .title{font-size:clamp(36px,5.6vw,64px); line-height:1.02; margin:0 0 10px; font-family:"Anton"; letter-spacing:.6px; text-shadow:0 2px 18px rgba(0,0,0,.45)}
@@ -168,31 +177,33 @@
     @media (prefers-reduced-motion: reduce){
       .reveal{transition:none}
     }
+
     /* Fixture & Tabla 2025 */
-  .tabs{display:flex;gap:8px;margin:8px 0 14px}
-  .tabs .tab{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:#0d162c;color:var(--txt);cursor:pointer;font-weight:700}
-  .tabs .tab.active{background:linear-gradient(90deg,var(--brand),var(--accent));color:#041019;border-color:transparent}
-  .panel{display:none}
-  .panel.show{display:block}
-  .status{display:grid;grid-template-columns:1fr;gap:8px}
-  .kpi{display:flex;gap:8px;align-items:center;background:var(--bg-soft);border:1px solid rgba(255,255,255,.06);padding:10px;border-radius:12px}
-  .kpi .dot{width:8px;height:8px;border-radius:999px;background:var(--accent)}
-  .list{margin:0;padding-left:16px}
-  .list li{margin:6px 0}
-  .badge-mini{display:inline-block;padding:4px 8px;border-radius:999px;background:#08202a;border:1px solid rgba(34,211,238,.45);color:#b6f5ff;font-weight:700;font-size:12px}
-  .muted-2{color:var(--muted);font-size:13px}
-  /* === Titulares en Anton (solo headings) === */
-  h1, h2, h3, h4, .brand .name, .comp-title, .comp-head h3 { 
-    font-family: "Anton", system-ui, sans-serif !important; 
-    font-weight: 400; 
-    letter-spacing: .5px; 
-  }
-  /* Legibilidad en "Fixture & Tabla — 2025" */
-  #competencias .comp-title, #competencias .comp-select .comp-card .ttl, #competencias .comp-head h3{color:#ffffff !important}
-  #competencias .comp-select .comp-card .sub{color:#f1f7ff !important}
-  /* Slot para logos de campeonatos (PNG con fondo transparente) */
-  .comp-head{position:relative}
-  .comp-head .comp-logo{height:42px; width:auto; margin-left:auto; display:block; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
+    .tabs{display:flex;gap:8px;margin:8px 0 14px}
+    .tabs .tab{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:#0d162c;color:var(--txt);cursor:pointer;font-weight:700}
+    .tabs .tab.active{background:linear-gradient(90deg,var(--brand),var(--accent));color:#041019;border-color:transparent}
+    .panel{display:none}
+    .panel.show{display:block}
+    .status{display:grid;grid-template-columns:1fr;gap:8px}
+    .kpi{display:flex;gap:8px;align-items:center;background:var(--bg-soft);border:1px solid rgba(255,255,255,.06);padding:10px;border-radius:12px}
+    .kpi .dot{width:8px;height:8px;border-radius:999px;background:var(--accent)}
+    .list{margin:0;padding-left:16px}
+    .list li{margin:6px 0}
+    .badge-mini{display:inline-block;padding:4px 8px;border-radius:999px;background:#08202a;border:1px solid rgba(34,211,238,.45);color:#b6f5ff;font-weight:700;font-size:12px}
+    .muted-2{color:var(--muted);font-size:13px}
+
+    /* === Titulares en Anton (solo headings) === */
+    h1, h2, h3, h4, .brand .name, .comp-title, .comp-head h3 { 
+      font-family: "Anton", system-ui, sans-serif !important; 
+      font-weight: 400; 
+      letter-spacing: .5px; 
+    }
+    /* Legibilidad en "Fixture & Tabla — 2025" */
+    #competencias .comp-title, #competencias .comp-select .comp-card .ttl, #competencias .comp-head h3{color:#ffffff !important}
+    #competencias .comp-select .comp-card .sub{color:#f1f7ff !important}
+    /* Slot para logos de campeonatos (PNG con fondo transparente) */
+    .comp-head{position:relative}
+    .comp-head .comp-logo{height:42px; width:auto; margin-left:auto; display:block; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
 
     /* === Escudos en tablas y listas + alineación izquierda === */
     .tbl-standings th:nth-child(2),
@@ -219,18 +230,7 @@
     "memberOf":"Liga de Fútbol de Eldorado",
     "sameAs":["https://www.facebook.com/","https://www.instagram.com/"]
   }
-    // Tabs: LFE / Provincial
-  document.querySelectorAll('#fixture-tabla-2025 .tab').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      document.querySelectorAll('#fixture-tabla-2025 .tab').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      const target = btn.dataset.target;
-      document.querySelectorAll('#fixture-tabla-2025 .panel').forEach(p=>p.classList.remove('show'));
-      document.getElementById(`panel-${target}`).classList.add('show');
-    });
-  });
-
-</script>
+  </script>
 </head>
 <body>
   <a href="#main" class="skip">Saltar al contenido</a>
@@ -260,57 +260,61 @@
 
   <main id="main" class="container">
 
-
-
-    <!-- HERO -->
+    <!-- ===== HERO (full width) ===== -->
     <section class="hero">
-      <!-- ⬇️ ÚNICO CAMBIO: ruta del archivo de la imagen -->
-      <div class="hero-bg"><img src="nacional-equipo.png" alt="Plantel del CSD Nacional posando antes del partido" loading="eager" fetchpriority="high"></div>
+      <!-- Archivo hero (en /img): img/nacional-equipo.png -->
+      <div class="hero-bg">
+        <img src="img/nacional-equipo.png" alt="Plantel del CSD Nacional posando antes del partido" loading="eager" fetchpriority="high">
+      </div>
       <div class="stripes" aria-hidden="true"></div>
-      <div class="hero-grid">
-        <div class="hero-copy reveal">
-          <h1 class="title">La casa digital del Nacional.<br/>Pueblo, garra y celeste y blanca.</h1>
-          <p class="subtitle">Hacete socio, comprá la camiseta y seguí el camino en el Provincial. 100% online, fácil y seguro.</p>
-          <div class="badges">
-            <span class="badge">Pagá con Mercado Pago</span>
-            <span class="badge">Retiro en sede</span>
-            <span class="badge">Envíos a todo el país</span>
+      <div class="hero-inner">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <h1 class="title">La casa digital del Nacional.<br/>Pueblo, garra y celeste y blanca.</h1>
+            <p class="subtitle">Hacete socio, comprá la camiseta y seguí el camino en el Provincial. 100% online, fácil y seguro.</p>
+            <div class="badges">
+              <span class="badge">Pagá con Mercado Pago</span>
+              <span class="badge">Retiro en sede</span>
+              <span class="badge">Envíos a todo el país</span>
+            </div>
+            <a class="cta" href="#socios">HACETE SOCIO</a>
           </div>
-          <a class="cta" href="#socios">HACETE SOCIO</a>
-        </div>
-        <div class="card reveal">
-          <h3 style="margin-top:0">Próximos partidos</h3>
-          <div class="fixture-item">
-  <div class="vs-line">
-    <span class="team-badge" data-team="Social 9 de Julio"></span>
-    <span class="sep">vs</span>
-    <span class="team-badge" data-team="Nacional (Puerto Piray)"></span>
-  </div>
-  <div>
-    <span class="badge-mini">Provincial FeMiFu — Octavos (Ida)</span>
-    <div class="tiny">Dom, 24 Ago — 16:00 hs — Estadio 9 de Julio (km 27)</div>
-  </div>
-</div>
-          <div class="fixture-item" style="margin-top:10px">
-  <div class="vs-line">
-    <span class="team-badge" data-team="Nacional (Puerto Piray)"></span>
-    <span class="sep">vs</span>
-    <span class="team-badge" data-team="A confirmar"></span>
-  </div>
-  <div>
-    <span class="badge-mini">Liga Eldoradense — Semifinal</span>
-    <div class="tiny">Fecha y hora: <em>A confirmar</em> — Villa Olímpica (Local)</div>
-  </div>
-</div>
+          <div class="card reveal">
+            <h3 style="margin-top:0">Próximos partidos</h3>
+
+            <div class="fixture-item">
+              <div class="vs-line">
+                <span class="team-badge" data-team="Social 9 de Julio"></span>
+                <span class="sep">vs</span>
+                <span class="team-badge" data-team="Nacional (Puerto Piray)"></span>
+              </div>
+              <div>
+                <span class="badge-mini">Provincial FeMiFu — Octavos (Ida)</span>
+                <div class="tiny">Dom, 24 Ago — 16:00 hs — Estadio 9 de Julio (km 27)</div>
+              </div>
+            </div>
+
+            <div class="fixture-item" style="margin-top:10px">
+              <div class="vs-line">
+                <span class="team-badge" data-team="Nacional (Puerto Piray)"></span>
+                <span class="sep">vs</span>
+                <span class="team-badge" data-team="A confirmar"></span>
+              </div>
+              <div>
+                <span class="badge-mini">Liga Eldoradense — Semifinal</span>
+                <div class="tiny">Fecha y hora: <em>A confirmar</em> — Villa Olímpica (Local)</div>
+              </div>
+            </div>
+
             <div>
-              <strong>Nacional vs Rival a confirmar</strong> <span style="display:inline-block; margin-left:6px; padding:2px 8px; border-radius:999px; background:#08202a; border:1px solid rgba(34,211,238,.45); color:#b6f5ff; font-weight:700; font-size:12px">Liga Eldoradense — Semifinal</span>
+              <strong>Nacional vs Rival a confirmar</strong>
+              <span style="display:inline-block; margin-left:6px; padding:2px 8px; border-radius:999px; background:#08202a; border:1px solid rgba(34,211,238,.45); color:#b6f5ff; font-weight:700; font-size:12px">Liga Eldoradense — Semifinal</span>
               <div class="tiny">Fecha y hora: <em>A confirmar</em> — Villa Olímpica (Local)</div>
             </div>
+
           </div>
-            </div>
-          </div>
-          <div class="tiny" style="margin-top:8px">*Reemplazar por fixture real.</div>
         </div>
+        <div class="tiny" style="margin-top:8px">*Reemplazar por fixture real.</div>
       </div>
     </section>
 
@@ -337,12 +341,12 @@
               <h3>Liga Eldoradense — Apertura 2025</h3>
               <span class="badge-soft">Estado: <strong>Semifinales</strong> • Clasificado (Global 8–3 vs Barrio Obrero)</span>
             </div>
-            <!-- NACIONAL: Logo LFE (PNG transparente) -->
-            <img class="comp-logo" src="assets/logo-lfe.png" alt="Liga Eldoradense (LFE)">
+            <!-- Logo LFE (colocar archivo en /img con este nombre) -->
+            <img class="comp-logo" src="img/LFE_emblem_transparent_3000.png" alt="Liga Eldoradense de Fútbol (LFE)">
           </header>
 
           <div class="tbl-wrap">
-            $1<table class="tbl-standings">
+            <table class="tbl-standings">
               <thead>
                 <tr><th>Pos</th><th>Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th></tr>
               </thead>
@@ -400,62 +404,62 @@
 
         <!-- FEMIFU -->
         <section id="panel-femifu" class="comp-panel" role="tabpanel" aria-labelledby="FeMiFu">
-      <header class="comp-head">
-        <div class="head-left">
-          <h3>Provincial FeMiFu — 2025</h3>
-          <span class="badge-soft">Estado: <strong>Octavos de final</strong> • 9 de Julio vs Nacional</span>
-        </div>
-        <!-- NACIONAL: Logo FeMiFu (PNG transparente) -->
-        <img class="comp-logo" src="assets/logo-femifu.png" alt="Torneo Provincial FeMiFu">
-      </header>
+          <header class="comp-head">
+            <div class="head-left">
+              <h3>Provincial FeMiFu — 2025</h3>
+              <span class="badge-soft">Estado: <strong>Octavos de final</strong> • 9 de Julio vs Nacional</span>
+            </div>
+            <!-- Logo FeMiFu (colocar archivo en /img con este nombre) -->
+            <img class="comp-logo" src="img/femifu-transparente.jpg" alt="Federación Misionera de Fútbol (FeMiFu)">
+          </header>
 
-      <div class="tbl-wrap">
-        $1<table class="tbl-standings">
-          <thead>
-            <tr><th>Pos</th><th>Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th></tr>
-          </thead>
-          <tbody>
-            <tr class="is-nacional"><td>1</td><td class="team" data-team="Nacional (Puerto Piray)"><span class="team-wrap"><img class="shield" alt=""><span class="name">Nacional (Puerto Piray)</span></span></td><td>6</td><td>3</td><td>3</td><td>0</td><td>8</td><td>4</td><td>+4</td><td>12</td></tr>
-            <tr><td>2</td><td class="team" data-team="Central Iguazú"><span class="team-wrap"><img class="shield" alt=""><span class="name">Central Iguazú</span></span></td><td>6</td><td>2</td><td>3</td><td>1</td><td>7</td><td>4</td><td>+3</td><td>9</td></tr>
-            <tr><td>3</td><td class="team" data-team="San Martín (Wanda)"><span class="team-wrap"><img class="shield" alt=""><span class="name">San Martín (Wanda)</span></span></td><td>6</td><td>1</td><td>3</td><td>2</td><td>4</td><td>5</td><td>-1</td><td>6</td></tr>
-            <tr><td>4</td><td class="team" data-team="8 de Mayo"><span class="team-wrap"><img class="shield" alt=""><span class="name">8 de Mayo</span></span></td><td>6</td><td>0</td><td>3</td><td>3</td><td>2</td><td>8</td><td>-6</td><td>3</td></tr>
-          </tbody>
-        </table>
-        <p class="src">Fuente: Torneo Provincial FeMiFu 2025 — Zona 6</p>
-      </div>
+          <div class="tbl-wrap">
+            <table class="tbl-standings">
+              <thead>
+                <tr><th>Pos</th><th>Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th></tr>
+              </thead>
+              <tbody>
+                <tr class="is-nacional"><td>1</td><td class="team" data-team="Nacional (Puerto Piray)"><span class="team-wrap"><img class="shield" alt=""><span class="name">Nacional (Puerto Piray)</span></span></td><td>6</td><td>3</td><td>3</td><td>0</td><td>8</td><td>4</td><td>+4</td><td>12</td></tr>
+                <tr><td>2</td><td class="team" data-team="Central Iguazú"><span class="team-wrap"><img class="shield" alt=""><span class="name">Central Iguazú</span></span></td><td>6</td><td>2</td><td>3</td><td>1</td><td>7</td><td>4</td><td>+3</td><td>9</td></tr>
+                <tr><td>3</td><td class="team" data-team="San Martín (Wanda)"><span class="team-wrap"><img class="shield" alt=""><span class="name">San Martín (Wanda)</span></span></td><td>6</td><td>1</td><td>3</td><td>2</td><td>4</td><td>5</td><td>-1</td><td>6</td></tr>
+                <tr><td>4</td><td class="team" data-team="8 de Mayo"><span class="team-wrap"><img class="shield" alt=""><span class="name">8 de Mayo</span></span></td><td>6</td><td>0</td><td>3</td><td>3</td><td>2</td><td>8</td><td>-6</td><td>3</td></tr>
+              </tbody>
+            </table>
+            <p class="src">Fuente: Torneo Provincial FeMiFu 2025 — Zona 6</p>
+          </div>
 
-      <div class="block">
-        <h4 style="margin:6px 0 8px">Próximos partidos</h4>
-        <ul class="list">
-          <li>
-            <span class="date">Ida: <strong>Dom 24/08 — 16:00</strong> • km 27</span>
-            <span class="vs">9 de Julio vs Nacional</span>
-            <span class="meta">Vuelta: Villa Olímpica — <em>Fecha y hora a confirmar</em></span>
-          </li>
-        </ul>
-      </div>
+          <div class="block">
+            <h4 style="margin:6px 0 8px">Próximos partidos</h4>
+            <ul class="list">
+              <li>
+                <span class="date">Ida: <strong>Dom 24/08 — 16:00</strong> • km 27</span>
+                <span class="vs">9 de Julio vs Nacional</span>
+                <span class="meta">Vuelta: Villa Olímpica — <em>Fecha y hora a confirmar</em></span>
+              </li>
+            </ul>
+          </div>
 
-      <div class="block">
-        <h4 style="margin:6px 0 8px">Resultados recientes</h4>
-        <ul class="list">
-          <li>
-            <span class="vs"><span class="team-badge" data-team="8 de Mayo"></span> <span class="sep">vs</span> <span class="team-badge" data-team="Nacional (Puerto Piray)"></span></span>
-            <span class="score win">0–2</span>
-            <span class="date">Fase de grupos</span>
-          </li>
-          <li>
-            <span class="vs"><span class="team-badge" data-team="Nacional (Puerto Piray)"></span> <span class="sep">vs</span> <span class="team-badge" data-team="Central Iguazú"></span></span>
-            <span class="score draw">1–1</span>
-            <span class="date">Fase de grupos</span>
-          </li>
-          <li>
-            <span class="vs"><span class="team-badge" data-team="Nacional (Puerto Piray)"></span> <span class="sep">vs</span> <span class="team-badge" data-team="San Martín (Wanda)"></span></span>
-            <span class="score win">2–1</span>
-            <span class="date">Fase de grupos</span>
-          </li>
-        </ul>
-      </div>
-    </section>
+          <div class="block">
+            <h4 style="margin:6px 0 8px">Resultados recientes</h4>
+            <ul class="list">
+              <li>
+                <span class="vs"><span class="team-badge" data-team="8 de Mayo"></span> <span class="sep">vs</span> <span class="team-badge" data-team="Nacional (Puerto Piray)"></span></span>
+                <span class="score win">0–2</span>
+                <span class="date">Fase de grupos</span>
+              </li>
+              <li>
+                <span class="vs"><span class="team-badge" data-team="Nacional (Puerto Piray)"></span> <span class="sep">vs</span> <span class="team-badge" data-team="Central Iguazú"></span></span>
+                <span class="score draw">1–1</span>
+                <span class="date">Fase de grupos</span>
+              </li>
+              <li>
+                <span class="vs"><span class="team-badge" data-team="Nacional (Puerto Piray)"></span> <span class="sep">vs</span> <span class="team-badge" data-team="San Martín (Wanda)"></span></span>
+                <span class="score win">2–1</span>
+                <span class="date">Fase de grupos</span>
+              </li>
+            </ul>
+          </div>
+        </section>
       </div>
     </section>
 
@@ -649,6 +653,7 @@
       e.target.reset();
       setTimeout(()=>status.classList.add('sr-only'), 3500);
     });
+
     // === Escudos: mapeo y renderizado automático ===
     (function(){
       const ESCUDOS = {
